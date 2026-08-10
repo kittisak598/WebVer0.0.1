@@ -1,18 +1,18 @@
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",      // ถ้า root ไม่มีรหัสผ่าน
-    database: "loveanimal"
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
 
 db.connect((err) => {
     if (err) {
-        console.log("เชื่อมต่อฐานข้อมูลไม่สำเร็จ");
         console.log(err);
     } else {
-        console.log("เชื่อมต่อฐานข้อมูลสำเร็จ");
+        console.log("Database Connected");
     }
 });
 
